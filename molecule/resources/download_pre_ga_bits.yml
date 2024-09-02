@@ -14,7 +14,7 @@
     - name: Retrieve PRE GA server
       ansible.builtin.get_url:
         url: "{{ eap_pre_ga_zip_url }}"
-        dest: "{{ lookup('env', 'PWD') }}/jboss-eap-{{ version_info.major }}.{{ version_info.minor }}.0.zip"
+        dest: "{{ lookup('env', 'MOLECULE_SCENARIO_DIRECTORY') }}/jboss-eap-{{ version_info.major }}.{{ version_info.minor }}.0.zip"
         mode: '0644'
         force: True
       delegate_to: localhost
@@ -28,7 +28,7 @@
     - name: Retrieve PRE GA server patch
       ansible.builtin.get_url:
         url: "{{ eap_pre_ga_patch_url }}"
-        dest: "{{ lookup('env', 'PWD') }}/jboss-eap-{{ eap_patch_version }}-patch.zip"
+        dest: "{{ lookup('env', 'MOLECULE_SCENARIO_DIRECTORY') }}/jboss-eap-{{ eap_patch_version }}-patch.zip"
         mode: '0644'
         force: True
       delegate_to: localhost
